@@ -1,19 +1,19 @@
 /**
  * Requires
  */
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-const path = require('path');
-const webpack = require('webpack');
-const merge = require('webpack-merge');
+const HtmlWebpackPlugin = require('html-webpack-plugin')
+const path = require('path')
+// const webpack = require('webpack')
+const merge = require('webpack-merge')
 
 /**
  * Variables
  */
-const Parts = require('./webpack.parts');
+const Parts = require('./webpack.parts')
 const PATHS = {
   src: path.join(__dirname, 'src'),
   dist: path.join(__dirname, 'dist')
-};
+}
 
 /**
  * Common Configuration
@@ -55,9 +55,9 @@ const Common = merge([
       new HtmlWebpackPlugin({ template: path.join(PATHS.src, 'index.html') })
     ]
   }
-]);
+])
 
-module.exports = function(env) {
+module.exports = function (env) {
   /**
    * Production Configuration
    */
@@ -66,7 +66,7 @@ module.exports = function(env) {
       Common,
       Parts.lintJS({ paths: PATHS.src }),
       Parts.CSS(env)
-    ]);
+    ])
   }
   /**
    * Develpment Configuration
@@ -84,5 +84,5 @@ module.exports = function(env) {
       }
     }),
     Parts.CSS(env)
-  ]);
+  ])
 }

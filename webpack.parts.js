@@ -1,7 +1,7 @@
-const webpack = require('webpack');
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
+// const webpack = require('webpack');
+const ExtractTextPlugin = require('extract-text-webpack-plugin')
 
-exports.devServer = function(options) {
+exports.devServer = function (options) {
   return {
     // configuation for the webpack-dev-server plugin
     devServer: {
@@ -17,7 +17,7 @@ exports.devServer = function(options) {
   }
 }
 
-exports.lintJS = function({ paths, options }) {
+exports.lintJS = function ({ paths, options }) {
   return {
     // this module is merged with the babel-loader module in the commons object via
     // `webpack-merge`
@@ -42,7 +42,7 @@ exports.lintJS = function({ paths, options }) {
   }
 }
 
-exports.CSS = function(env) {
+exports.CSS = function (env) {
   // In production, extract CSS into a separate file depending and inject
   // into the head of the document
   if (env === 'production') {
@@ -52,12 +52,12 @@ exports.CSS = function(env) {
           {
             test: /\.css$/,
             use: ExtractTextPlugin.extract({
-                loader: 'css-loader',
-                options: {
-                  sourceMap: true,
-                  modules: true,
-                  localIdentName: '[path][name]__[local]--[hash:base64:5]'
-                }
+              loader: 'css-loader',
+              options: {
+                sourceMap: true,
+                modules: true,
+                localIdentName: '[path][name]__[local]--[hash:base64:5]'
+              }
             })
           }
         ]

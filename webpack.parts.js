@@ -52,11 +52,13 @@ exports.CSS = function (env) {
           {
             test: /\.css$/,
             use: ExtractTextPlugin.extract({
-              loader: 'css-loader',
-              options: {
-                sourceMap: true,
-                modules: true,
-                localIdentName: '[path][name]__[local]--[hash:base64:5]'
+              use: {
+                loader: 'css-loader',
+                options: {
+                  sourceMap: true,
+                  modules: true,
+                  localIdentName: '[path][name]__[local]--[hash:base64:5]'
+                }
               }
             })
           }
@@ -79,7 +81,7 @@ exports.CSS = function (env) {
           test: /\.css$/,
           use: [
             // injects styles into the Document as a <link>
-            { loader: 'style-loader' },
+            'style-loader' ,
             {
               // applies necessary transformations to CSS files
               loader: 'css-loader',

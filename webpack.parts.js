@@ -81,7 +81,7 @@ exports.CSS = function (env) {
           test: /\.css$/,
           use: [
             // injects styles into the Document as a <link>
-            'style-loader' ,
+            'style-loader',
             {
               // applies necessary transformations to CSS files
               loader: 'css-loader',

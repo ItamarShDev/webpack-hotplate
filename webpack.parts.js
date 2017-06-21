@@ -1,5 +1,6 @@
-// const webpack = require('webpack');
+const webpack = require('webpack')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
+const path = require('path')
 
 exports.devServer = function (options) {
   return {
@@ -12,8 +13,15 @@ exports.devServer = function (options) {
       // remove browser status bar when running in production
       inline: true,
       // display erros only in console to limit webpack output size
-      stats: 'errors-only'
-    }
+      stats: 'errors-only',
+      // Tell the dev-server we're using HMR
+      hot: true,
+      contentBase: path.resolve(__dirname, 'dist'),
+      publicPath: '/'
+    },
+    plugins: [
+      new webpack.HotModuleReplacementPlugin() // enable HMR
+    ]
   }
 }
 
